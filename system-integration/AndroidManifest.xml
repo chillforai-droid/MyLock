@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  OPTIONAL OEM / AOSP SYSTEM-PRIVILEGED MANIFEST TEMPLATE
+  Not compiled into the standard third-party APK.
+  Must reside in /system_ext/priv-app/ and be signed with the OEM platform key.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mylock.system"
+    android:sharedUserId="android.uid.system">
+
+    <permission
+        android:name="com.mylock.system.permission.BIND_VOICE_UNLOCK"
+        android:protectionLevel="signature|privileged" />
+
+    <uses-permission android:name="android.permission.CONTROL_KEYGUARD" />
+    <uses-permission android:name="android.permission.PROVIDE_TRUST_AGENT" />
+    <uses-permission android:name="android.permission.MANAGE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAPTURE_AUDIO_HOTWORD" />
+
+    <application
+        android:directBootAware="true"
+        android:persistent="true">
+
+        <service
+            android:name=".service.MyLockPrivilegedVoiceService"
+            android:exported="true"
+            android:permission="com.mylock.system.permission.BIND_VOICE_UNLOCK"
+            android:directBootAware="true">
+            <intent-filter>
+                <action android:name="com.mylock.system.VOICE_UNLOCK_SERVICE" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

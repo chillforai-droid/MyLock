@@ -1,0 +1,6 @@
+{
+  "name": "My Lock",
+  "description": "Offline-first Android speaker verification, voice anti-spoofing, Keystore-encrypted biometric vault, and OEM/AOSP system integration architecture platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
